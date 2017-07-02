@@ -62,6 +62,7 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+% PART 1
 % calculate h(X), this is the same as predict.m from ex3
 
 % add bias to X (a1)
@@ -74,11 +75,19 @@ a2 = [ones(size(a2, 1), 1) a2];
 
 % output nodes (h(X))
 a3 = sigmoid(a2*Theta2');
-y
+
+% make y into a matrix
 y_mat = eye(num_labels)(y,:);
 
-% calculate cost for weights
-J = (1/m) * sum(sum(-y_mat .* log(a3) - (1 - y_mat) .* log(1 - a3)))
+% calculate cost for weights (Vectorized)
+J = (1/m) * sum(sum(-y_mat .* log(a3) - (1 - y_mat) .* log(1 - a3) ) );
+
+% PART 2
+
+% drop the first column in Theta1 and Theta2, calulate the regularization term, and add to J
+J += (lambda/(2*m)) * (sum( sum(Theta1(:,2:end) .^ 2) ) + sum( sum(Theta2(:,2:end) .^ 2) ) );
+
+% PART 3
 
 % -------------------------------------------------------------
 
