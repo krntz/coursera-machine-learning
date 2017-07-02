@@ -98,6 +98,13 @@ Delta2 = d3' * a2;
 Theta1_grad = Delta1*(1/m);
 Theta2_grad = Delta2*(1/m);
 
+% PART 3
+Theta1 = Theta1 * (lambda/m);
+Theta2 = Theta2 * (lambda/m);
+
+Theta1_grad(:,2:end) = Theta1_grad(:,2:end) + Theta1(:,2:end);
+Theta2_grad(:,2:end) = Theta2_grad(:,2:end) + Theta2(:,2:end);
+
 % -------------------------------------------------------------
 
 % =========================================================================
