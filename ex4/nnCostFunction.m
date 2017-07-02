@@ -62,23 +62,23 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+% calculate h(X), this is the same as predict.m from ex3
 
+% add bias to X (a1)
+X = [ones(size(X, 1), 1) X];
 
+a2 = sigmoid(X*Theta1');
 
+% add bias to a2
+a2 = [ones(size(a2, 1), 1) a2];
 
+% output nodes (h(X))
+a3 = sigmoid(a2*Theta2');
+y
+y_mat = eye(num_labels)(y,:);
 
-
-
-
-
-
-
-
-
-
-
-
-
+% calculate cost for weights
+J = (1/m) * sum(sum(-y_mat .* log(a3) - (1 - y_mat) .* log(1 - a3)))
 
 % -------------------------------------------------------------
 
