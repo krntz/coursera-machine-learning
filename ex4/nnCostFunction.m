@@ -79,15 +79,24 @@ a3 = sigmoid(a2*Theta2');
 % make y into a matrix
 y_mat = eye(num_labels)(y,:);
 
-% calculate cost for weights (Vectorized)
+% calculate cost for weights
 J = (1/m) * sum(sum(-y_mat .* log(a3) - (1 - y_mat) .* log(1 - a3) ) );
 
-% PART 2
+% PART 1.5
 
 % drop the first column in Theta1 and Theta2, calulate the regularization term, and add to J
 J += (lambda/(2*m)) * (sum( sum(Theta1(:,2:end) .^ 2) ) + sum( sum(Theta2(:,2:end) .^ 2) ) );
 
-% PART 3
+% PART 2 (vectorized)
+% don't know why Ng recommends using a for-loop, vectorization seems much simpler
+d3 = a3 - y_mat;
+d2 = (d3 * Theta2(:,2:end)) .* sigmoidGradient(X*Theta1');
+
+Delta1 = d2' * X;
+Delta2 = d3' * a2;
+
+Theta1_grad = Delta1*(1/m);
+Theta2_grad = Delta2*(1/m);
 
 % -------------------------------------------------------------
 
