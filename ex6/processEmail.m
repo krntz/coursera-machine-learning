@@ -98,12 +98,11 @@ while ~isempty(email_contents)
     %
 
 
+    [dummy, index] = max(strcmp(str, vocabList));
 
-
-
-
-
-
+    if (dummy == 1)
+        word_indices = [word_indices; index];
+    end
 
 
     % =============================================================
