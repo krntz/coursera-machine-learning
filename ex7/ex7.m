@@ -26,7 +26,7 @@ clear ; close all; clc
 %  into two functions -- findClosestCentroids and computeCentroids. In this
 %  part, you should complete the code in the findClosestCentroids function. 
 %
-fprintf('Finding closest centroids.\n\n');
+%fprintf('Finding closest centroids.\n\n');
 
 % Load an example dataset that we will be using
 load('ex7data2.mat');
@@ -39,12 +39,12 @@ initial_centroids = [3 3; 6 2; 8 5];
 % initial_centroids
 idx = findClosestCentroids(X, initial_centroids);
 
-fprintf('Closest centroids for the first 3 examples: \n')
-fprintf(' %d', idx(1:3));
-fprintf('\n(the closest centroids should be 1, 3, 2 respectively)\n');
+%fprintf('Closest centroids for the first 3 examples: \n')
+%fprintf(' %d', idx(1:3));
+%fprintf('\n(the closest centroids should be 1, 3, 2 respectively)\n');
 
-fprintf('Program paused. Press enter to continue.\n');
-pause;
+%fprintf('Program paused. Press enter to continue.\n');
+%pause;
 
 %% ===================== Part 2: Compute Means =========================
 %  After implementing the closest centroids function, you should now
