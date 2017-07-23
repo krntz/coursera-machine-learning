@@ -21,11 +21,17 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
+m = size(X,1);
 
+D = zeros(m, K);
 
+% iterate through each centroid
+for j = 1:K
+    % calculate the norm
+    D(:, j) = sum(bsxfun(@minus, X, centroids(j, :)).^2, 2);
+end
 
-
-
+[dummy, idx] = min(D, [], 2);
 
 % =============================================================
 
