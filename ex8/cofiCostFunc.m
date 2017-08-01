@@ -43,8 +43,8 @@ C = X * Theta' - Y;
 
 J = (1 / 2) * sum(C(R == 1) .^ 2) + ((lambda / 2) * sum(sum(Theta .^ 2))) + ((lambda / 2) * sum(sum(X .^ 2)));
 
-X_grad = (C .* R) * Theta;
-Theta_grad = (C .* R)' * X;
+X_grad = (C .* R) * Theta + (lambda * X);
+Theta_grad = (C .* R)' * X + (lambda * Theta);
 
 % =============================================================
 
